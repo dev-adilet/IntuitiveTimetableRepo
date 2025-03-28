@@ -1,0 +1,47 @@
+﻿.timetable {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0px 2px 30px 2px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    border-radius: 30px;
+}
+
+.thead-td {
+    text-align: center;
+    font-size: 24px;
+}
+
+.thead-tr{
+}
+
+.tbody-tr{
+}
+
+.timetable-td {
+    text-align: center;
+    font-size: 22px;
+}
+
+.inner {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    border-radius: 15px;
+}
+
+.inner tr td{
+}
+
+.inner-td-left{
+    border-right: 1.5px solid black;
+}
+
+.inner-td-mid {
+}
+
+.inner-td-right {
+    border-left: 1.5px solid black;
+}
+
+
