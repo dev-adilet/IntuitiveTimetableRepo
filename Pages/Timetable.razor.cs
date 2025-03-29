@@ -19,6 +19,12 @@ namespace IntuitiveTimetable.Pages
                 StartTime = "6:30 AM",
                 EndTime = "7:00 AM",
                 TaskName = "Gym"
+            },
+            new TimetableEntry
+            {
+                StartTime = "7:00 AM",
+                EndTime = "7:30 AM",
+                TaskName = "Work Prep"
             }
         };
     }
