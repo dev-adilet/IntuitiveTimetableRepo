@@ -17,28 +17,28 @@
         </tr>
     </thead>
     <tbody>
-        <tr class="tbody-tr">
-            <td 
-                colspan="3" 
-                class="timetable-td" 
-                style="padding-top: 0px;
-                       padding-right: 15px;
-                       padding-left: 15px;
-                       padding-bottom: 15px;">
-                <table class="inner">
-                    <tr>
-                        <td class="inner-td-left">
-                            06:00 AM
-                        </td>
-                        <td class="inner-td-mid">
-                            06:30 AM
-                        </td>
-                        <td class="inner-td-right">
-                            Breakfast
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
+        @for (int i = 0; i < timetableEntries.Count; i++)
+        {
+            <tr class="tbody-tr">
+                <td colspan="3"
+                    class="timetable-td"
+                    style="padding-top: 0px;
+                       padding-right: 20px;
+                       padding-left: 20px;
+                       padding-bottom: 20px;">
+                    <div class="inner">
+                        <div class="inner-td-left">
+                            @timetableEntries[i].StartTime
+                        </div>
+                        <div class="inner-td-mid">
+                            @timetableEntries[i].EndTime
+                        </div>
+                        <div class="inner-td-right">
+                            @timetableEntries[i].TaskName
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
