@@ -1,6 +1,9 @@
 ﻿@page "/"
+@using IntuitiveTimetable.Dialogs;
 
 <PageTitle>Timetable</PageTitle>
+
+<AddTaskDialog IsVisible="IsTaskDialogVisible" IsVisibleChanged="IsVisibleChanged" OnSave="SaveRow"></AddTaskDialog>
 
 <table class="timetable">
     <thead>
@@ -45,5 +48,14 @@
                 </td>
             </tr>
         }
+        <tr class="tbody-tr">
+            <td colspan="3">
+                <div class="button-row">
+                    <button class="floating-button" @onclick="AddRowButtonPressed">
+                        +
+                    </button>
+                </div>
+            </td>
+        </tr>
     </tbody>
 </table>

@@ -1,11 +1,13 @@
-﻿using IntuitiveTimetable.Models;
+﻿using IntuitiveTimetable.Dialogs;
+using IntuitiveTimetable.Models;
 using System.ComponentModel;
 
 namespace IntuitiveTimetable.Pages
 {
     public partial class Timetable
     {
-
+        public bool IsTaskDialogVisible { get; set; }
+        public TimetableEntry selectedTimetableEntry { get; set; }
         public List<TimetableEntry> timetableEntries = new List<TimetableEntry>
         {
             new TimetableEntry
@@ -27,5 +29,33 @@ namespace IntuitiveTimetable.Pages
                 TaskName = "Work Prep"
             }
         };
+
+        public void AddRowButtonPressed()
+        {
+            IsTaskDialogVisible = true;
+        }
+
+        public void IsVisibleChanged(bool e)
+        {
+            IsTaskDialogVisible = e;
+        }
+
+        public void SaveRow(TaskData taskData)
+        {
+            var newRow = new TimetableEntry
+            {
+                StartTime = taskData.StartTime,
+                EndTime = taskData.EndTime,
+                TaskName = taskData.TaskName
+            };
+
+            timetableEntries.Add(newRow);
+            closeAddRowDialog();
+        }
+
+        public void closeAddRowDialog()
+        {
+            IsTaskDialogVisible = false;
+        }
     }
 }
