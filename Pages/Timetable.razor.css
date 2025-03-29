@@ -32,7 +32,15 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.inner tr td{
+.header-inner {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.inner tr td {
 }
 
 .inner-td-left{
@@ -44,6 +52,20 @@
 
 .inner-td-right {
     border-left: 1.5px solid black;
+}
+
+.task-row-padding-normal {
+    padding-top: 0px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+.task-row-padding-end {
+    padding-top: 0px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
 }
 
 

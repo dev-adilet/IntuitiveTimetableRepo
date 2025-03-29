@@ -5,14 +5,23 @@
 <table class="timetable">
     <thead>
         <tr class="thead-tr">
-            <td class="thead-td" style="padding-left: 10px;">
-                Start time
-            </td>
-            <td class="thead-td">
-                End time
-            </td>
-            <td class="thead-td">
-                Task name
+            <td colspan="3"
+                class="thead-td"
+                style="padding-top: 10px;
+                       padding-right: 20px;
+                       padding-left: 20px;
+                       padding-bottom: 10px;">
+                <div class="header-inner">
+                    <div>
+                        StartTime
+                    </div>
+                    <div>
+                        EndTime
+                    </div>
+                    <div>
+                        TaskName
+                    </div>
+                </div>
             </td>
         </tr>
     </thead>
@@ -21,11 +30,7 @@
         {
             <tr class="tbody-tr">
                 <td colspan="3"
-                    class="timetable-td"
-                    style="padding-top: 0px;
-                       padding-right: 20px;
-                       padding-left: 20px;
-                       padding-bottom: 20px;">
+                    class="@(i == (timetableEntries.Count - 1) ? "timetable-td task-row-padding-end" : "timetable-td task-row-padding-normal")">
                     <div class="inner">
                         <div class="inner-td-left">
                             @timetableEntries[i].StartTime
