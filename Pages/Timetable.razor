@@ -3,7 +3,10 @@
 
 <PageTitle>Timetable</PageTitle>
 
-<AddTaskDialog IsVisible="IsTaskDialogVisible" IsVisibleChanged="IsVisibleChanged" OnSave="SaveRow"></AddTaskDialog>
+<AddTaskDialog IsVisible="IsTaskDialogVisible" 
+                IsVisibleChanged="IsVisibleChanged" 
+                OnSave="SaveRow"
+                StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog>
 
 <table class="timetable">
     <thead>

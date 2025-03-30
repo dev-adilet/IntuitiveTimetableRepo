@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using IntuitiveTimetable.Models;
 using Microsoft.AspNetCore.Components;
 
@@ -15,13 +16,20 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
         [Parameter]
         public EventCallback<TaskData> OnSave { get; set; }
 
-        protected string StartTime { get; set; }
-        protected string EndTime { get; set; }
-        protected string TaskName { get; set; }
+        [Parameter]
+        public TimeOnly StartTime { get; set; }
+        protected TimeOnly EndTime { get; set; } 
+        protected string ?TaskName { get; set; }
+
+        protected override void OnInitialized()
+        {
+            EndTime = StartTime;
+        }
 
         protected async Task CloseModal()
         {
             await IsVisibleChanged.InvokeAsync(false);
+            this.TaskName = string.Empty;
         }
 
         protected async Task Cancel()
@@ -35,7 +43,7 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
             {
                 StartTime = StartTime,
                 EndTime = EndTime,
-                TaskName = TaskName
+                TaskName = String.IsNullOrEmpty(TaskName) ? "" : TaskName
             };
 
             await OnSave.InvokeAsync(taskData);
@@ -46,8 +54,8 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
     // This class holds the task data; you could also place it in a separate file if desired.
     public class TaskData
     {
-        public string StartTime { get; set; }
-        public string EndTime { get; set; }
-        public string TaskName { get; set; }
+        public TimeOnly StartTime { get; set; }
+        public TimeOnly EndTime { get; set; }
+        public string ?TaskName { get; set; }
     }
 }
