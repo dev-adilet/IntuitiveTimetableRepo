@@ -1,43 +1,63 @@
 ﻿@page "/"
+@using IntuitiveTimetable.Dialogs;
 
 <PageTitle>Timetable</PageTitle>
+
+<AddTaskDialog IsVisible="IsTaskDialogVisible" 
+                IsVisibleChanged="IsVisibleChanged" 
+                OnSave="SaveRow"
+                StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog>
 
 <table class="timetable">
     <thead>
         <tr class="thead-tr">
-            <td class="thead-td" style="padding-left: 10px;">
-                Start time
-            </td>
-            <td class="thead-td">
-                End time
-            </td>
-            <td class="thead-td">
-                Task name
+            <td colspan="3"
+                class="thead-td"
+                style="padding-top: 10px;
+                       padding-right: 20px;
+                       padding-left: 20px;
+                       padding-bottom: 10px;">
+                <div class="header-inner">
+                    <div>
+                        Start Time
+                    </div>
+                    <div>
+                        End Time
+                    </div>
+                    <div>
+                        Task Name
+                    </div>
+                </div>
             </td>
         </tr>
     </thead>
     <tbody>
+        @for (int i = 0; i < timetableEntries.Count; i++)
+        {
+            <tr class="tbody-tr">
+                <td colspan="3"
+                    class="@(i == (timetableEntries.Count - 1) ? "timetable-td task-row-padding-end" : "timetable-td task-row-padding-normal")">
+                    <div class="inner">
+                        <div class="inner-td-left">
+                            @timetableEntries[i].StartTime
+                        </div>
+                        <div class="inner-td-mid">
+                            @timetableEntries[i].EndTime
+                        </div>
+                        <div class="inner-td-right">
+                            @timetableEntries[i].TaskName
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
         <tr class="tbody-tr">
-            <td 
-                colspan="3" 
-                class="timetable-td" 
-                style="padding-top: 0px;
-                       padding-right: 15px;
-                       padding-left: 15px;
-                       padding-bottom: 15px;">
-                <table class="inner">
-                    <tr>
-                        <td class="inner-td-left">
-                            06:00 AM
-                        </td>
-                        <td class="inner-td-mid">
-                            06:30 AM
-                        </td>
-                        <td class="inner-td-right">
-                            Breakfast
-                        </td>
-                    </tr>
-                </table>
+            <td colspan="3">
+                <div class="button-row">
+                    <button class="floating-button" @onclick="AddRowButtonPressed">
+                        +
+                    </button>
+                </div>
             </td>
         </tr>
     </tbody>
