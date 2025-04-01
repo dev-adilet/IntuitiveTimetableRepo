@@ -37,7 +37,10 @@
             <tr class="tbody-tr">
                 <td colspan="3"
                     class="@(i == (timetableEntries.Count - 1) ? "timetable-td task-row-padding-end" : "timetable-td task-row-padding-normal")">
-                    <div class="inner">
+                    <div class="inner" style="position: relative;">
+                        <div id="row-options-button-div" class="floating-extra">
+                            &#x22EF;
+                        </div>
                         <div class="inner-td-left">
                             @timetableEntries[i].StartTime
                         </div>
