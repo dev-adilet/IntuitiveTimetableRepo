@@ -29,7 +29,7 @@
     background: #fff; /* So the shadow is visible */
     border-radius: 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 0.35fr;
 }
 
 .header-inner {
@@ -108,6 +108,66 @@
     font-size: 0.9rem;
     box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
     background: #fff; /* So the shadow is visible */
+}
+
+#row-options-item-div {
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    font-size: 0.9rem;
+    width: 100%;
+    border-collapse: collapse;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#row-options-delete-item-div {
+    height: 1.6rem;
+    width: 1.6rem;
+    position: relative;
+    top: 0.2rem;
+    right: 0.3rem;
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    font-size: 0.9rem;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    text-align: center;
+}
+
+#row-options-edit-item-div {
+    height: 1.6rem;
+    width: 1.6rem;
+    position: relative;
+    top: 0.2rem;
+    right: 0.3rem;
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    font-size: 0.9rem;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    text-align: center;
+}
+
+#delete-icon {
+    font-size: 0.95rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0rem;
+}
+
+#edit-icon {
+    font-size: 0.95rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0rem;
+}
+
+.option-items-div {
+    width: 100%;
+    border-collapse: collapse;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 

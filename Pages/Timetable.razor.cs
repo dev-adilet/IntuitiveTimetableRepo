@@ -1,5 +1,7 @@
 ﻿using IntuitiveTimetable.Dialogs;
 using IntuitiveTimetable.Models;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using System.ComponentModel;
 
 namespace IntuitiveTimetable.Pages
@@ -7,6 +9,8 @@ namespace IntuitiveTimetable.Pages
     public partial class Timetable
     {
         public bool IsTaskDialogVisible { get; set; }
+        public bool IsOptionsMenuVisible { get; set; }
+        public int SelectedRowIndex { get; set; } = -1;
         public TimetableEntry ?selectedTimetableEntry { get; set; }
         public List<TimetableEntry> timetableEntries = new List<TimetableEntry>
         {
@@ -56,6 +60,21 @@ namespace IntuitiveTimetable.Pages
         public void closeAddRowDialog()
         {
             IsTaskDialogVisible = false;
+        }
+        public void OptionsMenuClicked(int index)
+        {
+            IsOptionsMenuVisible = true;
+            SelectedRowIndex = index;
+        }
+
+        public void DeleteRow(int index)
+        {
+            timetableEntries.RemoveAt(index);
+        }
+
+        public void CloseOptions()
+        {
+            SelectedRowIndex = -1;
         }
     }
 }
