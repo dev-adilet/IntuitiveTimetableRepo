@@ -94,10 +94,12 @@
     padding-bottom: 1rem;
 }
 
-#row-options-button-div {
-    position: absolute;
+.row-options-button-div {
+    position: relative;
+    height: 1.55rem;
+    width: 1.55rem;
     top: 0.25rem;
-    right: 0.3rem;
+    left: 1.8rem; 
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
     padding-left: 0.4rem;
@@ -111,10 +113,12 @@
 }
 
 #row-options-item-div {
+    position: relative;
+    right: 0.075rem;
     cursor: pointer;
     /*border: 0.1rem solid black;*/
     border-radius: 1.2rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     width: 100%;
     border-collapse: collapse;
     display: grid;
@@ -122,52 +126,47 @@
 }
 
 #row-options-delete-item-div {
-    height: 1.6rem;
-    width: 1.6rem;
+    height: 1.55rem;
+    width: 1.55rem;
     position: relative;
-    top: 0.2rem;
-    right: 0.3rem;
+    top: 0.25rem;
     cursor: pointer;
     /*border: 0.1rem solid black;*/
     border-radius: 1.2rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
     background: #fff; /* So the shadow is visible */
     text-align: center;
 }
 
 #row-options-edit-item-div {
-    height: 1.6rem;
-    width: 1.6rem;
+    height: 1.55rem;
+    width: 1.55rem;
     position: relative;
-    top: 0.2rem;
-    right: 0.3rem;
+    top: 0.25rem;
+    left: 0.05rem;
     cursor: pointer;
     /*border: 0.1rem solid black;*/
     border-radius: 1.2rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
     background: #fff; /* So the shadow is visible */
     text-align: center;
 }
 
 #delete-icon {
-    font-size: 0.95rem;
-    padding-top: 0.3rem;
+    font-size: 1.1rem;
+    padding-top: 0.25rem;
     padding-bottom: 0rem;
+    color: red;
 }
 
 #edit-icon {
-    font-size: 0.95rem;
-    padding-top: 0.3rem;
+    font-size: 1.1rem;
+    padding-top: 0.25rem;
     padding-bottom: 0rem;
-}
-
-.option-items-div {
-    width: 100%;
-    border-collapse: collapse;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    padding-left: 0.1rem;
+    color: orange;
 }
 
 

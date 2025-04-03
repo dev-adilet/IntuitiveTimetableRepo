@@ -61,7 +61,8 @@ StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog
                         }
                         else
                         {
-                            <div id="row-options-button-div" class="floating-extra" @onclick="@(() => OptionsMenuClicked(i-1))">
+                            var tempi = i;
+                            <div id="options-button-row-@i" class="floating-extra row-options-button-div" @onclick="@(() => OptionsMenuClicked(tempi))">
                                 &#x22EF;
                             </div>
                         }
