@@ -50,11 +50,12 @@ StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog
                         </div>
                         @if (SelectedRowIndex == i)
                         {
+                            var tempi2 = i;
                             <div id="row-options-item-div">
-                                <div id="row-options-delete-item-div">
+                                <div id="row-options-delete-item-div" @onclick="@(() => DeleteRow(tempi2))">
                                     <i id="delete-icon" class="material-icons">delete_forever</i>
                                 </div>
-                                <div id="row-options-edit-item-div">
+                                <div id="row-options-edit-item-div">  
                                     <i id="edit-icon" class="material-icons">edit</i>
                                 </div>
                             </div>
@@ -62,7 +63,7 @@ StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog
                         else
                         {
                             var tempi = i;
-                            <div id="options-button-row-@i" class="floating-extra row-options-button-div" @onclick="@(() => OptionsMenuClicked(tempi))">
+                            <div id="options-button-row-@i" class="row-options-button-div" @onclick="@(() => OptionsMenuClicked(tempi))">
                                 &#x22EF;
                             </div>
                         }

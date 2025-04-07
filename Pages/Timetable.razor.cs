@@ -69,7 +69,12 @@ namespace IntuitiveTimetable.Pages
 
         public void DeleteRow(int index)
         {
-            timetableEntries.RemoveAt(index);
+            List<TimetableEntry> timetableEntries2 = timetableEntries
+                .Select(entry => entry.Clone())
+                .ToList();
+
+            //you have a deep copy (a var that is in a separate memory, so not by reference) of timetableEntries in timetableEntries2,
+            // below you need to write code that will go through the this list and delete the row at index, and adjust other rows to that
         }
 
         public void CloseOptions()
