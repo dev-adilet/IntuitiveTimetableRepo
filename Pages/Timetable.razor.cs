@@ -73,8 +73,10 @@ namespace IntuitiveTimetable.Pages
                 .Select(entry => entry.Clone())
                 .ToList();
 
-            //you have a deep copy (a var that is in a separate memory, so not by reference) of timetableEntries in timetableEntries2,
-            // below you need to write code that will go through the this list and delete the row at index, and adjust other rows to that
+            //you have a deep copy (a var that is in a separate memory, so not by reference)
+            // of timetableEntries in timetableEntries2,
+            // below you need to write code that will go through the
+            // list and delete the row at index, and adjust other rows to that
         }
 
         public void CloseOptions()
