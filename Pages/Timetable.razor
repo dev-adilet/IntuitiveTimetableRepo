@@ -48,7 +48,7 @@ StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog
                         <div class="inner-td-right">
                             @timetableEntries[i].TaskName
                         </div>
-                        @if (SelectedRowIndex == i)
+                        @if (SelectedRowIndex == i && i != 0)
                         {
                             var tempi2 = i;
                             <div id="row-options-item-div">

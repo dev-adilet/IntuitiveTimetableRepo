@@ -73,27 +73,36 @@ namespace IntuitiveTimetable.Pages
                 .Select(entry => entry.Clone())
                 .ToList();
 
-            //you have a deep copy (a var that is in a separate memory, so not by reference)
-            // of timetableEntries in timetableEntries2,
-            // below you need to write code that will go through the
-            // list and delete the row at index, and adjust other rows to that
-
             for (int i = 0; i < timetableEntries2.Count-2; i++)
             {
+                //first cycle of the loop is to get index + 1 row start time set to index - 1 row endtime, as the index row is being deleted
                 if (i == 0)
                 {
-                    var duration = timetableEntries2[index + 1].EndTime - timetableEntries2[index + 1].StartTime;
-                    timetableEntries2[index + 1].StartTime = timetableEntries2[index - 1].EndTime;
-                    //find set the timetableEntries2[index + 1].EndTime by adding the duration to the newly set timetableEntries2[index + 1].StartTime
+                    if (index == timetableEntries.Count-1)
+                    {
+                        //do nothing
+                    } 
+                    else
+                    {
+                        var duration = timetableEntries2[index + 1].EndTime - timetableEntries2[index + 1].StartTime;
+                        timetableEntries2[index + 1].StartTime = timetableEntries2[index - 1].EndTime;
+                        timetableEntries2[index + 1].EndTime = timetableEntries2[index + 1].StartTime.AddMinutes(duration.Minutes);
+                    }
+                    
                 }
                 else
                 {
+                    var duration = timetableEntries2[i + 2].EndTime - timetableEntries2[i + 2].StartTime;
                     timetableEntries2[i + 2].StartTime = timetableEntries2[i + 1].EndTime;
+                    timetableEntries2[i + 2].EndTime = timetableEntries2[i + 2].StartTime.AddMinutes(duration.Minutes);
                 }
-
-
-
             }
+
+            timetableEntries2.RemoveAt(index);
+
+            timetableEntries = timetableEntries2;
+
+            CloseOptions();
         }
 
         public void CloseOptions()
