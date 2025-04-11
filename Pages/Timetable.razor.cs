@@ -77,6 +77,23 @@ namespace IntuitiveTimetable.Pages
             // of timetableEntries in timetableEntries2,
             // below you need to write code that will go through the
             // list and delete the row at index, and adjust other rows to that
+
+            for (int i = 0; i < timetableEntries2.Count-2; i++)
+            {
+                if (i == 0)
+                {
+                    var duration = timetableEntries2[index + 1].EndTime - timetableEntries2[index + 1].StartTime;
+                    timetableEntries2[index + 1].StartTime = timetableEntries2[index - 1].EndTime;
+                    //find set the timetableEntries2[index + 1].EndTime by adding the duration to the newly set timetableEntries2[index + 1].StartTime
+                }
+                else
+                {
+                    timetableEntries2[i + 2].StartTime = timetableEntries2[i + 1].EndTime;
+                }
+
+
+
+            }
         }
 
         public void CloseOptions()
