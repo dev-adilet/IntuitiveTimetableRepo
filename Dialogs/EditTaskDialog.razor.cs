@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
 {
-    public partial class AddTaskDialog : ComponentBase
+    public partial class EditTaskDialog : ComponentBase
     {
         [Parameter]
         public bool IsVisible { get; set; }
