@@ -29,7 +29,7 @@
     background: #fff; /* So the shadow is visible */
     border-radius: 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 0.6fr;
 }
 
 .header-inner {
@@ -92,6 +92,82 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 1rem;
+}
+
+.row-options-button-div {
+    position: relative;
+    height: 1.55rem;
+    width: 1.55rem;
+    top: 0.25rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    font-size: 0.9rem;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    justify-self: end;
+    right: 0.3rem;
+}
+
+#row-options-item-div {
+    top: 0.25rem;
+    justify-self: end;
+    position: relative;
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    font-size: 0.9rem;
+    width: 70px;
+    border-collapse: collapse;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0px;
+}
+
+#row-options-delete-item-div {
+    height: 1.55rem;
+    width: 1.55rem;
+    position: relative;
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    text-align: center;
+    justify-self: end;
+}
+
+#row-options-edit-item-div {
+    height: 1.55rem;
+    width: 1.55rem;
+    position: relative;
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    text-align: center;
+    justify-self: end;
+    right: 0.3rem;
+}
+
+#delete-icon {
+    font-size: 1.1rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0rem;
+    color: red;
+}
+
+#edit-icon {
+    font-size: 1.1rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0rem;
+    padding-left: 0.1rem;
+    color: orange;
 }
 
 

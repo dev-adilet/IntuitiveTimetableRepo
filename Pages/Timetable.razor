@@ -1,19 +1,20 @@
 ﻿@page "/"
 @using IntuitiveTimetable.Dialogs;
+@using MudBlazor
 
 <PageTitle>Timetable</PageTitle>
 
 <AddTaskDialog IsVisible="IsTaskDialogVisible" 
-                IsVisibleChanged="IsVisibleChanged" 
-                OnSave="SaveRow"
-                StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog>
+IsVisibleChanged="IsVisibleChanged" 
+OnSave="SaveRow"
+StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog>
 
 <table class="timetable">
     <thead>
         <tr class="thead-tr">
             <td colspan="3"
-                class="thead-td"
-                style="padding-top: 10px;
+            class="thead-td"
+            style="padding-top: 10px;
                        padding-right: 20px;
                        padding-left: 20px;
                        padding-bottom: 10px;">
@@ -36,8 +37,8 @@
         {
             <tr class="tbody-tr">
                 <td colspan="3"
-                    class="@(i == (timetableEntries.Count - 1) ? "timetable-td task-row-padding-end" : "timetable-td task-row-padding-normal")">
-                    <div class="inner">
+                class="@(i == (timetableEntries.Count - 1) ? "timetable-td task-row-padding-end" : "timetable-td task-row-padding-normal")">
+                    <div class="inner" style="position: relative;">
                         <div class="inner-td-left">
                             @timetableEntries[i].StartTime
                         </div>
@@ -47,6 +48,25 @@
                         <div class="inner-td-right">
                             @timetableEntries[i].TaskName
                         </div>
+                        @if (SelectedRowIndex == i && i != 0)
+                        {
+                            var tempi2 = i;
+                            <div id="row-options-item-div">
+                                <div id="row-options-delete-item-div" @onclick="@(() => DeleteRow(tempi2))">
+                                    <i id="delete-icon" class="material-icons">delete_forever</i>
+                                </div>
+                                <div id="row-options-edit-item-div">  
+                                    <i id="edit-icon" class="material-icons">edit</i>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            var tempi = i;
+                            <div id="options-button-row-@i" class="row-options-button-div" @onclick="@(() => OptionsMenuClicked(tempi))">
+                                &#x22EF;
+                            </div>
+                        }
                     </div>
                 </td>
             </tr>
