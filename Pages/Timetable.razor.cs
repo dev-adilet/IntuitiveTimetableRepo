@@ -18,19 +18,31 @@ namespace IntuitiveTimetable.Pages
             {
                 StartTime = new TimeOnly(6,0),
                 EndTime = new TimeOnly(6,30),
-                TaskName = "Breakfast"
+                TaskName = "Row1"
             },
             new TimetableEntry
             {
                 StartTime = new TimeOnly(6,30),
                 EndTime = new TimeOnly(7,00),
-                TaskName = "Gym"
+                TaskName = "Row2"
             },
             new TimetableEntry
             {
                 StartTime = new TimeOnly(7,00),
                 EndTime = new TimeOnly(7,30),
-                TaskName = "Work Prep"
+                TaskName = "Row3"
+            },
+            new TimetableEntry
+            {
+                StartTime = new TimeOnly(7,30),
+                EndTime = new TimeOnly(8,00),
+                TaskName = "Row4"
+            },
+            new TimetableEntry
+            {
+                StartTime = new TimeOnly(8,00),
+                EndTime = new TimeOnly(8,15),
+                TaskName = "Row5"
             }
         };
 
@@ -73,28 +85,23 @@ namespace IntuitiveTimetable.Pages
                 .Select(entry => entry.Clone())
                 .ToList();
 
-            for (int i = 0; i < timetableEntries2.Count-2; i++)
+            for (int i = 0; i < timetableEntries2.Count - (index + 1); i++)
             {
-                //first cycle of the loop is to get index + 1 row start time set to index - 1 row endtime, as the index row is being deleted
+
                 if (i == 0)
                 {
-                    if (index == timetableEntries.Count-1)
-                    {
-                        //do nothing
-                    } 
-                    else
-                    {
-                        var duration = timetableEntries2[index + 1].EndTime - timetableEntries2[index + 1].StartTime;
-                        timetableEntries2[index + 1].StartTime = timetableEntries2[index - 1].EndTime;
-                        timetableEntries2[index + 1].EndTime = timetableEntries2[index + 1].StartTime.AddMinutes(duration.Minutes);
-                    }
-                    
-                }
+                    var temp = timetableEntries2[index + 1];
+                    var duration = timetableEntries2[index + 1].EndTime - timetableEntries2[index + 1].StartTime;
+                    timetableEntries2[index + 1].StartTime = timetableEntries2[index - 1].EndTime;
+                    timetableEntries2[index + 1].EndTime = timetableEntries2[index + 1].StartTime.AddMinutes(duration.Minutes);
+                } 
                 else
                 {
-                    var duration = timetableEntries2[i + 2].EndTime - timetableEntries2[i + 2].StartTime;
-                    timetableEntries2[i + 2].StartTime = timetableEntries2[i + 1].EndTime;
-                    timetableEntries2[i + 2].EndTime = timetableEntries2[i + 2].StartTime.AddMinutes(duration.Minutes);
+                    var rowBeingChanged = timetableEntries2[index + 1 + i];
+                    var temp = timetableEntries2[index - 1 + i];
+                    var duration = timetableEntries2[index + 1 + i].EndTime - timetableEntries2[index + 1 + i].StartTime;
+                    timetableEntries2[index + 1 + i].StartTime = timetableEntries2[index + i].EndTime;
+                    timetableEntries2[index + 1 + i].EndTime = timetableEntries2[index + 1 + i].StartTime.AddMinutes(duration.Minutes);
                 }
             }
 
