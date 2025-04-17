@@ -6,8 +6,10 @@ namespace IntuitiveTimetable.Pages
 {
     public partial class Timetable
     {
-        public bool IsTaskDialogVisible { get; set; }
+        public bool IsAddTaskDialogVisible { get; set; }
+        public bool IsEditTaskDialogVisible { get; set; }
         public TimetableEntry ?selectedTimetableEntry { get; set; }
+        public int selectedIndex { get; set; }
         public List<TimetableEntry> timetableEntries = new List<TimetableEntry>
         {
             new TimetableEntry
@@ -32,17 +34,17 @@ namespace IntuitiveTimetable.Pages
 
         public void AddRowButtonPressed()
         {
-            IsTaskDialogVisible = true;
+            IsAddTaskDialogVisible = true;
         }
 
         public void AddTaskDialogVisChanged(bool e)
         {
-            IsTaskDialogVisible = e;
+            IsAddTaskDialogVisible = e;
         }
 
         public void EditTaskDialogVisChanged(bool e)
         {
-            IsTaskDialogVisible = e;
+            IsAddTaskDialogVisible = e;
         }
 
         public void UpdateTask(TaskData taskData, int index)
@@ -65,7 +67,7 @@ namespace IntuitiveTimetable.Pages
 
         public void closeAddRowDialog()
         {
-            IsTaskDialogVisible = false;
+            IsAddTaskDialogVisible = false;
         }
     }
 }

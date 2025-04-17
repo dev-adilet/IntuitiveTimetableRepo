@@ -10,7 +10,10 @@
 
 <EditTaskDialog IsVisible="IsEditTaskDialogVisible"
                 VisibleChanged="EditTaskDialogVisChanged"
-                TaskUpdated="UpdateTask"></EditTaskDialog>
+                TaskUpdated="UpdateTask"
+                StartTime="selectedTimetableEntry.StartTime"
+                EndTime="selectedTimetableEntry.EndTime"
+                TaskName="selectedTimetableEntry"></EditTaskDialog>
 
 <table class="timetable">
     <thead>

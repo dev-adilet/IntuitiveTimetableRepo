@@ -41,7 +41,7 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
             await CloseModal();
         }
 
-        protected async Task Save()
+        protected async Task Update()
         {
             var taskData = new TaskData
             {
@@ -50,7 +50,7 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
                 TaskName = String.IsNullOrEmpty(TaskName) ? "" : TaskName
             };
 
-            await OnSave.InvokeAsync(taskData);
+            await Update.InvokeAsync(taskData);
             await CloseModal();
         }
     }
