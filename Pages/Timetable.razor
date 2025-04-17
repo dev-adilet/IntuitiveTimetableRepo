@@ -11,7 +11,7 @@
 
 <EditTaskDialog IsVisible="IsEditTaskDialogVisible"
                 VisibleChanged="EditTaskDialogVisChanged"
-                TaskUpdated="UpdateTask"
+                TaskUpdated="UpdateRowDetails"
                 StartTime="selectedTimetableEntry.StartTime"
                 EndTime="selectedTimetableEntry.EndTime"
                 TaskName="selectedTimetableEntry"></EditTaskDialog>
@@ -62,7 +62,7 @@
                                 <div id="row-options-delete-item-div" @onclick="@(() => DeleteRow(tempi2))">
                                     <i id="delete-icon" class="material-icons">delete_forever</i>
                                 </div>
-                                <div id="row-options-edit-item-div">  
+                                <div id="row-options-edit-item-div" @onclick="@(() => UpdateRow(tempi2))>  
                                     <i id="edit-icon" class="material-icons">edit</i>
                                 </div>
                             </div>

@@ -9,11 +9,11 @@ namespace IntuitiveTimetable.Pages
     public partial class Timetable
     {
         public bool IsOptionsMenuVisible { get; set; }
-        public int SelectedRowIndex { get; set; } = -1;
+        public int MenuOptionsRowIndex { get; set; } = -1;
         public bool IsAddTaskDialogVisible { get; set; }
         public bool IsEditTaskDialogVisible { get; set; }
         public TimetableEntry ?selectedTimetableEntry { get; set; }
-        public int selectedIndex { get; set; }
+        public int selectedEditRowIndex { get; set; }
         public List<TimetableEntry> timetableEntries = new List<TimetableEntry>
         {
             new TimetableEntry
@@ -50,7 +50,7 @@ namespace IntuitiveTimetable.Pages
 
         public void AddRowButtonPressed()
         {
-            IsAddTaskDialogVisible = true;
+            AddTaskDialogVisChanged(true);
         }
 
         public void AddTaskDialogVisChanged(bool e)
@@ -60,12 +60,22 @@ namespace IntuitiveTimetable.Pages
 
         public void EditTaskDialogVisChanged(bool e)
         {
-            IsAddTaskDialogVisible = e;
+            IsEditTaskDialogVisible = e;
         }
 
-        public void UpdateTask(TaskData taskData, int index)
+        public void UpdateRowDetails(TaskData taskData, int index)
         {
-            //
+            timetableEntries[index].StartTime = taskData.StartTime;
+            timetableEntries[index].EndTime = taskData.EndTime;
+            timetableEntries[index].TaskName = taskData.TaskName;
+            CloseEditRowDialog();
+        }
+
+        public void UpdateRow(int index)
+        {
+            selectedEditRowIndex = index;
+            selectedTimetableEntry = timetableEntries[index];
+            IsEditTaskDialogVisible = true;
         }
 
         public void SaveRow(TaskData taskData)
@@ -78,17 +88,22 @@ namespace IntuitiveTimetable.Pages
             };
 
             timetableEntries.Add(newRow);
-            closeAddRowDialog();
+            CloseAddRowDialog();
         }
 
-        public void closeAddRowDialog()
+        public void CloseAddRowDialog()
         {
-            IsAddTaskDialogVisible = false;
+            AddTaskDialogVisChanged(false);
+        }
+
+        public void CloseEditRowDialog()
+        {
+            EditTaskDialogVisChanged(false);
         }
         public void OptionsMenuClicked(int index)
         {
             IsOptionsMenuVisible = true;
-            SelectedRowIndex = index;
+            MenuOptionsRowIndex = index;
         }
 
         public void DeleteRow(int index)
@@ -126,7 +141,7 @@ namespace IntuitiveTimetable.Pages
 
         public void CloseOptions()
         {
-            SelectedRowIndex = -1;
+            MenuOptionsRowIndex = -1;
         }
     }
 }
