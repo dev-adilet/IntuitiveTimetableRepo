@@ -4,9 +4,13 @@
 <PageTitle>Timetable</PageTitle>
 
 <AddTaskDialog IsVisible="IsTaskDialogVisible" 
-                IsVisibleChanged="IsVisibleChanged" 
+                VisibleChanged="AddTaskDialogVisChanged" 
                 OnSave="SaveRow"
                 StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog>
+
+<EditTaskDialog IsVisible="IsEditTaskDialogVisible"
+                VisibleChanged="EditTaskDialogVisChanged"
+                TaskUpdated="UpdateTask"></EditTaskDialog>
 
 <table class="timetable">
     <thead>

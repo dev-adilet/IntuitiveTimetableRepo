@@ -35,9 +35,19 @@ namespace IntuitiveTimetable.Pages
             IsTaskDialogVisible = true;
         }
 
-        public void IsVisibleChanged(bool e)
+        public void AddTaskDialogVisChanged(bool e)
         {
             IsTaskDialogVisible = e;
+        }
+
+        public void EditTaskDialogVisChanged(bool e)
+        {
+            IsTaskDialogVisible = e;
+        }
+
+        public void UpdateTask(TaskData taskData, int index)
+        {
+            //
         }
 
         public void SaveRow(TaskData taskData)

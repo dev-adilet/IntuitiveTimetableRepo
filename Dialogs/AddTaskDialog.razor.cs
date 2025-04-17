@@ -11,7 +11,7 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
         public bool IsVisible { get; set; }
 
         [Parameter]
-        public EventCallback<bool> IsVisibleChanged { get; set; }
+        public EventCallback<bool> VisibleChanged { get; set; }
 
         [Parameter]
         public EventCallback<TaskData> OnSave { get; set; }
@@ -28,7 +28,7 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
 
         protected async Task CloseModal()
         {
-            await IsVisibleChanged.InvokeAsync(false);
+            await VisibleChanged.InvokeAsync(false);
             this.TaskName = string.Empty;
         }
 

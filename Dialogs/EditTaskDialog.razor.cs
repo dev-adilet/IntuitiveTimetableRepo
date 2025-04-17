@@ -11,15 +11,19 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
         public bool IsVisible { get; set; }
 
         [Parameter]
-        public EventCallback<bool> IsVisibleChanged { get; set; }
+        public EventCallback<bool> VisibleChanged { get; set; }
 
         [Parameter]
-        public EventCallback<TaskData> OnSave { get; set; }
+        public EventCallback<(TaskData, int)> TaskUpdated { get; set; }
 
         [Parameter]
         public TimeOnly StartTime { get; set; }
-        protected TimeOnly EndTime { get; set; } 
-        protected string ?TaskName { get; set; }
+
+        [Parameter]
+        public TimeOnly EndTime { get; set; }
+
+        [Parameter]
+        public string ?TaskName { get; set; }
 
         protected override void OnInitialized()
         {
@@ -28,7 +32,7 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
 
         protected async Task CloseModal()
         {
-            await IsVisibleChanged.InvokeAsync(false);
+            await VisibleChanged.InvokeAsync(false);
             this.TaskName = string.Empty;
         }
 
