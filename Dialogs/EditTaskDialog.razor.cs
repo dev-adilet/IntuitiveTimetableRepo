@@ -14,7 +14,7 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
         public EventCallback<bool> VisibleChanged { get; set; }
 
         [Parameter]
-        public EventCallback<(TaskData, int)> TaskUpdated { get; set; }
+        public EventCallback<TaskData> TaskUpdated { get; set; }
 
         [Parameter]
         public TimeOnly StartTime { get; set; }
@@ -24,6 +24,7 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
 
         [Parameter]
         public string ?TaskName { get; set; }
+        public int selectedEditRowIndex { get; set; }
 
         protected override void OnInitialized()
         {
@@ -50,7 +51,7 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
                 TaskName = String.IsNullOrEmpty(TaskName) ? "" : TaskName
             };
 
-            await Update.InvokeAsync(taskData);
+            await TaskUpdated.InvokeAsync(taskData);
             await CloseModal();
         }
     }

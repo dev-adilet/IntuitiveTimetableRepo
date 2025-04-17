@@ -63,11 +63,11 @@ namespace IntuitiveTimetable.Pages
             IsEditTaskDialogVisible = e;
         }
 
-        public void UpdateRowDetails(TaskData taskData, int index)
+        public void UpdateRowDetails(TaskData taskData)
         {
-            timetableEntries[index].StartTime = taskData.StartTime;
-            timetableEntries[index].EndTime = taskData.EndTime;
-            timetableEntries[index].TaskName = taskData.TaskName;
+            timetableEntries[selectedEditRowIndex].StartTime = taskData.StartTime;
+            timetableEntries[selectedEditRowIndex].EndTime = taskData.EndTime;
+            timetableEntries[selectedEditRowIndex].TaskName = taskData.TaskName;
             CloseEditRowDialog();
         }
 

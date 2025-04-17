@@ -4,7 +4,7 @@
 
 <PageTitle>Timetable</PageTitle>
 
-<AddTaskDialog IsVisible="IsTaskDialogVisible" 
+<AddTaskDialog IsVisible="IsAddTaskDialogVisible" 
                 VisibleChanged="AddTaskDialogVisChanged" 
                 OnSave="SaveRow"
                 StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog>
@@ -55,14 +55,14 @@
                         <div class="inner-td-right">
                             @timetableEntries[i].TaskName
                         </div>
-                        @if (SelectedRowIndex == i && i != 0)
+                        @if (MenuOptionsRowIndex == i && i != 0)
                         {
                             var tempi2 = i;
                             <div id="row-options-item-div">
                                 <div id="row-options-delete-item-div" @onclick="@(() => DeleteRow(tempi2))">
                                     <i id="delete-icon" class="material-icons">delete_forever</i>
                                 </div>
-                                <div id="row-options-edit-item-div" @onclick="@(() => UpdateRow(tempi2))>  
+                                <div id="row-options-edit-item-div">  
                                     <i id="edit-icon" class="material-icons">edit</i>
                                 </div>
                             </div>
