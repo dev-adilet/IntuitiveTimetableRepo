@@ -14,7 +14,8 @@
                 TaskUpdated="UpdateRowDetails"
                 StartTime="selectedTimetableEntry!.StartTime"
                 EndTime="selectedTimetableEntry!.EndTime"
-                TaskName="@(selectedTimetableEntry!.TaskName)"></EditTaskDialog>
+                TaskName="@(selectedTimetableEntry!.TaskName)"
+                ValidationErrorMessage="@EditTaskValidationErrorMessage"></EditTaskDialog>
 
 <table class="timetable">
     <thead>

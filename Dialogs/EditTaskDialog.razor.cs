@@ -23,7 +23,10 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
         public TimeOnly ?EndTime { get; set; }
 
         [Parameter]
-        public string ?TaskName { get; set; } 
+        public string ?TaskName { get; set; }
+
+        [Parameter]
+        public string? ValidationErrorMessage { get; set; }
         public int selectedEditRowIndex { get; set; }
 
         protected override void OnInitialized()

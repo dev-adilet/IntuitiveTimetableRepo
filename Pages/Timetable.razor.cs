@@ -14,6 +14,8 @@ namespace IntuitiveTimetable.Pages
         public bool IsEditTaskDialogVisible { get; set; }
         public TimetableEntry? selectedTimetableEntry { get; set; } = new TimetableEntry { };
         public int selectedEditRowIndex { get; set; }
+
+        public string EditTaskValidationErrorMessage { get; set; } = string.Empty;
         public List<TimetableEntry> timetableEntries = new List<TimetableEntry>
         {
             new TimetableEntry
@@ -65,10 +67,20 @@ namespace IntuitiveTimetable.Pages
 
         public void UpdateRowDetails(TaskData taskData)
         {
-            timetableEntries[selectedEditRowIndex].StartTime = taskData.StartTime;
-            timetableEntries[selectedEditRowIndex].EndTime = taskData.EndTime;
-            timetableEntries[selectedEditRowIndex].TaskName = taskData.TaskName;
-            CloseEditRowDialog();
+            //if next task start time is earlier than the updated task time, then update error message.
+            if (taskData.EndTime > timetableEntries[selectedEditRowIndex+1].StartTime 
+                || taskData.StartTime > timetableEntries[selectedEditRowIndex + 1].StartTime)
+            {
+                EditTaskValidationErrorMessage = 
+                    "Start Time and/or End Time must not exceed next task Start Time";
+            }
+            else
+            {
+                timetableEntries[selectedEditRowIndex].StartTime = taskData.StartTime;
+                timetableEntries[selectedEditRowIndex].EndTime = taskData.EndTime;
+                timetableEntries[selectedEditRowIndex].TaskName = taskData.TaskName;
+                CloseEditRowDialog();
+            }
         }
 
         public void UpdateRow(int index)
