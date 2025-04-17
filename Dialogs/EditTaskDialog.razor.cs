@@ -17,13 +17,13 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
         public EventCallback<TaskData> TaskUpdated { get; set; }
 
         [Parameter]
-        public TimeOnly StartTime { get; set; }
+        public TimeOnly ?StartTime { get; set; }
 
         [Parameter]
-        public TimeOnly EndTime { get; set; }
+        public TimeOnly ?EndTime { get; set; }
 
         [Parameter]
-        public string ?TaskName { get; set; }
+        public string ?TaskName { get; set; } 
         public int selectedEditRowIndex { get; set; }
 
         protected override void OnInitialized()
@@ -46,8 +46,8 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
         {
             var taskData = new TaskData
             {
-                StartTime = StartTime,
-                EndTime = EndTime,
+                StartTime = (TimeOnly)StartTime,
+                EndTime = (TimeOnly)EndTime,
                 TaskName = String.IsNullOrEmpty(TaskName) ? "" : TaskName
             };
 

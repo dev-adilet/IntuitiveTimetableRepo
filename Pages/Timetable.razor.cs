@@ -12,7 +12,7 @@ namespace IntuitiveTimetable.Pages
         public int MenuOptionsRowIndex { get; set; } = -1;
         public bool IsAddTaskDialogVisible { get; set; }
         public bool IsEditTaskDialogVisible { get; set; }
-        public TimetableEntry ?selectedTimetableEntry { get; set; }
+        public TimetableEntry? selectedTimetableEntry { get; set; } = new TimetableEntry { };
         public int selectedEditRowIndex { get; set; }
         public List<TimetableEntry> timetableEntries = new List<TimetableEntry>
         {
