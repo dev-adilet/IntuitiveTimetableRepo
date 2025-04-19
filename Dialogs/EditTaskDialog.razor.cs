@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using IntuitiveTimetable.Models;
 using Microsoft.AspNetCore.Components;
+using System.Linq;
 
 namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
 {
@@ -55,7 +56,6 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
             };
 
             await TaskUpdated.InvokeAsync(taskData);
-            await CloseModal();
         }
     }
 }

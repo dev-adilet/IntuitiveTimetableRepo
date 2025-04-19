@@ -67,6 +67,8 @@ namespace IntuitiveTimetable.Pages
 
         public void UpdateRowDetails(TaskData taskData)
         {
+            var endTimeIsMoreThanNextStartTime = taskData.EndTime > timetableEntries[selectedEditRowIndex + 1].StartTime;
+            var startTimeIsMoreThanNextStartTime = taskData.StartTime > timetableEntries[selectedEditRowIndex + 1].StartTime;
             //if next task start time is earlier than the updated task time, then update error message.
             if (taskData.EndTime > timetableEntries[selectedEditRowIndex+1].StartTime 
                 || taskData.StartTime > timetableEntries[selectedEditRowIndex + 1].StartTime)

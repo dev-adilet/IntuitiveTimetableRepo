@@ -23,10 +23,13 @@
                         <label class="form-label">Task Name</label>
                         <input type="text" class="form-control" @bind="TaskName" />
                     </div>
+                    <div>
+                        <p class="validation-message">@ValidationErrorMessage</p>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" @onclick="Cancel">Cancel</button>
-                    <button class="btn btn-primary" @onclick="Update">Save</button>
+                    <button class="btn btn-primary" @onclick="Update">Update</button>
                 </div>
             </div>
         </div>
