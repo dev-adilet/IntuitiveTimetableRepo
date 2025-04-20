@@ -1,13 +1,19 @@
 ﻿using IntuitiveTimetable.Dialogs;
 using IntuitiveTimetable.Models;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.JSInterop;
+using System;
 using System.ComponentModel;
+using System.Text.Json;
 
 namespace IntuitiveTimetable.Pages
 {
     public partial class Timetable
     {
+        [Inject]
+        private IJSRuntime JS { get; set; }
         public bool IsOptionsMenuVisible { get; set; }
         public int MenuOptionsRowIndex { get; set; } = -1;
         public bool IsAddTaskDialogVisible { get; set; }
@@ -170,6 +176,27 @@ namespace IntuitiveTimetable.Pages
         public void CloseOptions()
         {
             MenuOptionsRowIndex = -1;
+        }
+
+        public async Task ExportAsync()
+        {
+            string json = JsonSerializer.Serialize(timetableEntries);
+            await JS.InvokeVoidAsync("downloadFile", DateTime.Today.ToShortDateString().Replace("/", "-") + ".json", json);
+        }
+
+        private async Task HandleFileSelected(InputFileChangeEventArgs e)
+        {
+            var file = e.File;
+
+            using var stream = file.OpenReadStream(1024 * 1024);
+            using var reader = new StreamReader(stream);
+            var json = await reader.ReadToEndAsync();
+
+            var loadedEntries = JsonSerializer.Deserialize<List<TimetableEntry>>(json);
+            if (loadedEntries != null)
+            {
+                timetableEntries = loadedEntries;
+            }
         }
     }
 }
