@@ -74,8 +74,6 @@ namespace IntuitiveTimetable.Pages
 
         public void UpdateRowDetails(TaskData taskData)
         {
-            var endTimeIsMoreThanNextStartTime = taskData.EndTime > timetableEntries[selectedEditRowIndex + 1].StartTime;
-            var startTimeIsMoreThanNextStartTime = taskData.StartTime > timetableEntries[selectedEditRowIndex + 1].StartTime;
             //if next task start time is earlier than the updated task time, then update error message.
             if (taskData.EndTime > timetableEntries[selectedEditRowIndex+1].StartTime 
                 || taskData.StartTime > timetableEntries[selectedEditRowIndex + 1].StartTime)
@@ -89,6 +87,10 @@ namespace IntuitiveTimetable.Pages
                 timetableEntries[selectedEditRowIndex].StartTime = taskData.StartTime;
                 timetableEntries[selectedEditRowIndex].EndTime = taskData.EndTime;
                 timetableEntries[selectedEditRowIndex].TaskName = taskData.TaskName;
+                if (timetableEntries.Count != selectedEditRowIndex + 1)
+                {
+                    timetableEntries[selectedEditRowIndex + 1].StartTime = taskData.EndTime;
+                }
                 CloseEditRowDialog();
             }
         }
@@ -111,7 +113,7 @@ namespace IntuitiveTimetable.Pages
                 StartTime = taskData.StartTime,
                 EndTime = taskData.EndTime,
                 TaskName = taskData.TaskName
-            };
+            }; 
 
             timetableEntries.Add(newRow);
             CloseAddRowDialog();
