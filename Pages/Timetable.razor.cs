@@ -80,15 +80,7 @@ namespace IntuitiveTimetable.Pages
 
         public void UpdateRowDetails(TaskData taskData)
         {
-            //if next task start time is earlier than the updated task time, then update error message.
-            if (taskData.EndTime > timetableEntries[selectedEditRowIndex+1].StartTime 
-                || taskData.StartTime > timetableEntries[selectedEditRowIndex + 1].StartTime)
-            {
-                EditTaskValidationErrorMessage =
-                    "\"Start time\" and/or \"End time\" " +
-                    "must not exceed the next task \"Start time\"";
-            }
-            else
+            if (timetableEntries.Count == selectedEditRowIndex + 1)
             {
                 timetableEntries[selectedEditRowIndex].StartTime = taskData.StartTime;
                 timetableEntries[selectedEditRowIndex].EndTime = taskData.EndTime;
@@ -98,6 +90,27 @@ namespace IntuitiveTimetable.Pages
                     timetableEntries[selectedEditRowIndex + 1].StartTime = taskData.EndTime;
                 }
                 CloseEditRowDialog();
+            } 
+            else
+            {
+                if (taskData.EndTime > timetableEntries[selectedEditRowIndex + 1].StartTime
+                || taskData.StartTime > timetableEntries[selectedEditRowIndex + 1].StartTime)
+                {
+                    EditTaskValidationErrorMessage =
+                        "\"Start time\" and/or \"End time\" " +
+                        "must not exceed the next task \"Start time\"";
+                }
+                else
+                {
+                    timetableEntries[selectedEditRowIndex].StartTime = taskData.StartTime;
+                    timetableEntries[selectedEditRowIndex].EndTime = taskData.EndTime;
+                    timetableEntries[selectedEditRowIndex].TaskName = taskData.TaskName;
+                    if (timetableEntries.Count != selectedEditRowIndex + 1)
+                    {
+                        timetableEntries[selectedEditRowIndex + 1].StartTime = taskData.EndTime;
+                    }
+                    CloseEditRowDialog();
+                }
             }
         }
 
