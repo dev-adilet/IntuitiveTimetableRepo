@@ -6,14 +6,20 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add Task</h5>
+                    <h5 class="modal-title">Edit Task</h5>
                     <button type="button" class="btn-close" aria-label="Close" @onclick="CloseModal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Start Time</label>
-                        @* <input type="time" class="form-control" @bind="StartTime" /> *@
-                        <InputDate Type="InputDateType.Time" class="form-control" @bind-Value="StartTime" disabled="true"></InputDate>
+                        @if ((bool)IsItFirstRow!)
+                        {
+                            <input type="time" class="form-control" @bind="StartTime" />
+                        }
+                        else
+                        {
+                            <InputDate Type="InputDateType.Time" class="form-control" @bind-Value="StartTime" disabled="true"></InputDate>
+                        }
                     </div>
                     <div class="mb-3">
                         <label class="form-label">End Time</label>
@@ -23,10 +29,13 @@
                         <label class="form-label">Task Name</label>
                         <input type="text" class="form-control" @bind="TaskName" />
                     </div>
+                    <div>
+                        <p class="validation-message">@ValidationErrorMessage</p>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" @onclick="Cancel">Cancel</button>
-                    <button class="btn btn-primary" @onclick="Save">Save</button>
+                    <button class="btn btn-primary" @onclick="Update">Update</button>
                 </div>
             </div>
         </div>

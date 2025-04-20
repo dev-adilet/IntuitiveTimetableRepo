@@ -2,10 +2,11 @@
 using System.Threading.Tasks;
 using IntuitiveTimetable.Models;
 using Microsoft.AspNetCore.Components;
+using System.Linq;
 
 namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
 {
-    public partial class AddTaskDialog : ComponentBase
+    public partial class EditTaskDialog : ComponentBase
     {
         [Parameter]
         public bool IsVisible { get; set; }
@@ -14,12 +15,22 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
         public EventCallback<bool> VisibleChanged { get; set; }
 
         [Parameter]
-        public EventCallback<TaskData> OnSave { get; set; }
+        public EventCallback<TaskData> TaskUpdated { get; set; }
 
         [Parameter]
-        public TimeOnly StartTime { get; set; }
-        protected TimeOnly EndTime { get; set; } 
-        protected string ?TaskName { get; set; }
+        public TimeOnly ?StartTime { get; set; }
+
+        [Parameter]
+        public TimeOnly ?EndTime { get; set; }
+
+        [Parameter]
+        public string ?TaskName { get; set; }
+
+        [Parameter]
+        public string? ValidationErrorMessage { get; set; }
+        [Parameter]
+        public bool? IsItFirstRow { get; set; }
+        public int selectedEditRowIndex { get; set; }
 
         protected override void OnInitialized()
         {
@@ -37,17 +48,16 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
             await CloseModal();
         }
 
-        protected async Task Save()
+        protected async Task Update()
         {
             var taskData = new TaskData
             {
-                StartTime = StartTime,
-                EndTime = EndTime,
+                StartTime = (TimeOnly)StartTime,
+                EndTime = (TimeOnly)EndTime,
                 TaskName = String.IsNullOrEmpty(TaskName) ? "" : TaskName
             };
 
-            await OnSave.InvokeAsync(taskData);
-            await CloseModal();
+            await TaskUpdated.InvokeAsync(taskData);
         }
     }
 }

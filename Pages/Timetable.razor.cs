@@ -8,10 +8,16 @@ namespace IntuitiveTimetable.Pages
 {
     public partial class Timetable
     {
-        public bool IsTaskDialogVisible { get; set; }
         public bool IsOptionsMenuVisible { get; set; }
-        public int SelectedRowIndex { get; set; } = -1;
-        public TimetableEntry ?selectedTimetableEntry { get; set; }
+        public int MenuOptionsRowIndex { get; set; } = -1;
+        public bool IsAddTaskDialogVisible { get; set; }
+        public bool IsEditTaskDialogVisible { get; set; }
+        public bool IsItFirstTask { get; set; } = false;
+
+        public TimetableEntry? selectedTimetableEntry { get; set; } = new TimetableEntry { };
+        public int selectedEditRowIndex { get; set; }
+
+        public string EditTaskValidationErrorMessage { get; set; } = string.Empty;
         public List<TimetableEntry> timetableEntries = new List<TimetableEntry>
         {
             new TimetableEntry
@@ -48,12 +54,53 @@ namespace IntuitiveTimetable.Pages
 
         public void AddRowButtonPressed()
         {
-            IsTaskDialogVisible = true;
+            AddTaskDialogVisChanged(true);
         }
 
-        public void IsVisibleChanged(bool e)
+        public void AddTaskDialogVisChanged(bool e)
         {
-            IsTaskDialogVisible = e;
+            IsAddTaskDialogVisible = e;
+        }
+
+        public void EditTaskDialogVisChanged(bool e)
+        {
+            IsEditTaskDialogVisible = e;
+            if (e == false)
+            {
+                EditTaskValidationErrorMessage = string.Empty;
+                IsItFirstTask = false;
+            }
+        }
+
+        public void UpdateRowDetails(TaskData taskData)
+        {
+            var endTimeIsMoreThanNextStartTime = taskData.EndTime > timetableEntries[selectedEditRowIndex + 1].StartTime;
+            var startTimeIsMoreThanNextStartTime = taskData.StartTime > timetableEntries[selectedEditRowIndex + 1].StartTime;
+            //if next task start time is earlier than the updated task time, then update error message.
+            if (taskData.EndTime > timetableEntries[selectedEditRowIndex+1].StartTime 
+                || taskData.StartTime > timetableEntries[selectedEditRowIndex + 1].StartTime)
+            {
+                EditTaskValidationErrorMessage =
+                    "\"Start time\" and/or \"End time\" must not exceed the next task \"Start time\"";
+            }
+            else
+            {
+                timetableEntries[selectedEditRowIndex].StartTime = taskData.StartTime;
+                timetableEntries[selectedEditRowIndex].EndTime = taskData.EndTime;
+                timetableEntries[selectedEditRowIndex].TaskName = taskData.TaskName;
+                CloseEditRowDialog();
+            }
+        }
+
+        public void UpdateRow(int index)
+        {
+            if (index == 0)
+            {
+                IsItFirstTask = true;
+            }
+            selectedEditRowIndex = index;
+            selectedTimetableEntry = timetableEntries[index];
+            IsEditTaskDialogVisible = true;
         }
 
         public void SaveRow(TaskData taskData)
@@ -66,17 +113,22 @@ namespace IntuitiveTimetable.Pages
             };
 
             timetableEntries.Add(newRow);
-            closeAddRowDialog();
+            CloseAddRowDialog();
         }
 
-        public void closeAddRowDialog()
+        public void CloseAddRowDialog()
         {
-            IsTaskDialogVisible = false;
+            AddTaskDialogVisChanged(false);
+        }
+
+        public void CloseEditRowDialog()
+        {
+            EditTaskDialogVisChanged(false);
         }
         public void OptionsMenuClicked(int index)
         {
             IsOptionsMenuVisible = true;
-            SelectedRowIndex = index;
+            MenuOptionsRowIndex = index;
         }
 
         public void DeleteRow(int index)
@@ -114,7 +166,7 @@ namespace IntuitiveTimetable.Pages
 
         public void CloseOptions()
         {
-            SelectedRowIndex = -1;
+            MenuOptionsRowIndex = -1;
         }
     }
 }
