@@ -2,104 +2,119 @@
 @using IntuitiveTimetable.Dialogs;
 @using MudBlazor
 
-<PageTitle>Timetable</PageTitle>
+<div>
+    <PageTitle>Timetable</PageTitle>
 
-<AddTaskDialog IsVisible="IsAddTaskDialogVisible" 
-VisibleChanged="AddTaskDialogVisChanged" 
-OnSave="SaveRow"
-StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog>
+    <AddTaskDialog IsVisible="IsAddTaskDialogVisible"
+                   VisibleChanged="AddTaskDialogVisChanged"
+                   OnSave="SaveRow"
+                   StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog>
 
-<EditTaskDialog IsVisible="IsEditTaskDialogVisible"
-VisibleChanged="EditTaskDialogVisChanged"
-TaskUpdated="UpdateRowDetails"
-StartTime="selectedTimetableEntry!.StartTime"
-EndTime="selectedTimetableEntry!.EndTime"
-TaskName="@(selectedTimetableEntry!.TaskName)"
-ValidationErrorMessage="@EditTaskValidationErrorMessage"
-IsItFirstRow="IsItFirstTask"></EditTaskDialog>
+    <EditTaskDialog IsVisible="IsEditTaskDialogVisible"
+                    VisibleChanged="EditTaskDialogVisChanged"
+                    TaskUpdated="UpdateRowDetails"
+                    StartTime="selectedTimetableEntry!.StartTime"
+                    EndTime="selectedTimetableEntry!.EndTime"
+                    TaskName="@(selectedTimetableEntry!.TaskName)"
+                    ValidationErrorMessage="@EditTaskValidationErrorMessage"
+                    IsItFirstRow="IsItFirstTask"></EditTaskDialog>
 
-<table class="timetable">
-    <thead>
-        <tr class="thead-tr">
-            <td colspan="3"
-            class="thead-td"
-            style="padding-top: 10px;
+    <table class="timetable">
+        <thead>
+            <tr class="thead-tr">
+                <td colspan="3"
+                    class="thead-td"
+                    style="padding-top: 10px;
                        padding-right: 20px;
                        padding-left: 20px;
                        padding-bottom: 10px;">
-                <div class="header-inner">
-                    <div>
-                        Start Time
-                    </div>
-                    <div>
-                        End Time
-                    </div>
-                    <div>
-                        Task Name
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        @for (int i = 0; i < timetableEntries.Count; i++)
-        {
-            <tr class="tbody-tr">
-                <td colspan="3"
-                class="@(i == (timetableEntries.Count - 1) ? "timetable-td task-row-padding-end" : "timetable-td task-row-padding-normal")">
-                    <div class="inner" style="position: relative;">
-                        <div class="inner-td-left">
-                            @timetableEntries[i].StartTime
+                    <div class="header-inner">
+                        <div>
+                            Start Time
                         </div>
-                        <div class="inner-td-mid">
-                            @timetableEntries[i].EndTime
+                        <div>
+                            End Time
                         </div>
-                        <div class="inner-td-right">
-                            @timetableEntries[i].TaskName
+                        <div>
+                            Task Name
                         </div>
-                        @if (MenuOptionsRowIndex == i)
-                        {
-                            var tempi2 = i;
-                            @if (i == 0)
-                            {
-                                <div id="row-options-item-div-0">
-                                    <div id="row-options-edit-item-div-0" @onclick="@(() => UpdateRow(tempi2))">
-                                        <i id="edit-icon" class="material-icons">edit</i>
-                                    </div>
-                                </div>
-                            }
-                            else
-                            {
-                                <div id="row-options-item-div">
-                                    <div id="row-options-delete-item-div" @onclick="@(() => DeleteRow(tempi2))">
-                                        <i id="delete-icon" class="material-icons">delete_forever</i>
-                                    </div>
-                                    <div id="row-options-edit-item-div" @onclick="@(() => UpdateRow(tempi2))">
-                                        <i id="edit-icon" class="material-icons">edit</i>
-                                    </div>
-                                </div>
-                            }
-                            
-                        }
-                        else
-                        {
-                            var tempi = i;
-                            <div id="options-button-row-@i" class="row-options-button-div" @onclick="@(() => OptionsMenuClicked(tempi))">
-                                &#x22EF;
-                            </div>
-                        }
                     </div>
                 </td>
             </tr>
-        }
-        <tr class="tbody-tr">
-            <td colspan="3">
-                <div class="button-row">
-                    <button class="floating-button" @onclick="AddRowButtonPressed">
-                        +
-                    </button>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < timetableEntries.Count; i++)
+            {
+                <tr class="tbody-tr">
+                    <td colspan="3"
+                        class="@(i == (timetableEntries.Count - 1) ? "timetable-td task-row-padding-end" : "timetable-td task-row-padding-normal")">
+                        <div class="inner" style="position: relative;">
+                            <div class="inner-td-left">
+                                @timetableEntries[i].StartTime
+                            </div>
+                            <div class="inner-td-mid">
+                                @timetableEntries[i].EndTime
+                            </div>
+                            <div class="inner-td-right">
+                                @timetableEntries[i].TaskName
+                            </div>
+                            @if (MenuOptionsRowIndex == i)
+                            {
+                                var tempi2 = i;
+                                @if (i == 0)
+                                {
+                                    <div id="row-options-item-div-0">
+                                        <div id="row-options-edit-item-div-0" @onclick="@(() => UpdateRow(tempi2))">
+                                            <i id="edit-icon" class="material-icons">edit</i>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div id="row-options-item-div">
+                                        <div id="row-options-delete-item-div" @onclick="@(() => DeleteRow(tempi2))">
+                                            <i id="delete-icon" class="material-icons">delete_forever</i>
+                                        </div>
+                                        <div id="row-options-edit-item-div" @onclick="@(() => UpdateRow(tempi2))">
+                                            <i id="edit-icon" class="material-icons">edit</i>
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+                            else
+                            {
+                                var tempi = i;
+                                <div id="options-button-row-@i" class="row-options-button-div" @onclick="@(() => OptionsMenuClicked(tempi))">
+                                    &#x22EF;
+                                </div>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+            <tr class="tbody-tr">
+                <td colspan="3">
+                    <div class="button-row">
+                        <button class="floating-button" @onclick="AddRowButtonPressed">
+                            +
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="action-button-div">
+        <label class="export-button" @onclick="ExportAsync">
+            Export
+        </label>
+        <label class="import-button">
+            Import
+            <InputFile OnChange="HandleFileSelected" accept=".json" style="display: none;" />
+        </label>
+    </div>
+</div>
+
+
+
