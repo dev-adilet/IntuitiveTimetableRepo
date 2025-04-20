@@ -81,7 +81,8 @@ namespace IntuitiveTimetable.Pages
                 || taskData.StartTime > timetableEntries[selectedEditRowIndex + 1].StartTime)
             {
                 EditTaskValidationErrorMessage =
-                    "\"Start time\" and/or \"End time\" must not exceed the next task \"Start time\"";
+                    "\"Start time\" and/or \"End time\" " +
+                    "must not exceed the next task \"Start time\"";
             }
             else
             {
