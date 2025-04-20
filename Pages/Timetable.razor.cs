@@ -12,6 +12,8 @@ namespace IntuitiveTimetable.Pages
         public int MenuOptionsRowIndex { get; set; } = -1;
         public bool IsAddTaskDialogVisible { get; set; }
         public bool IsEditTaskDialogVisible { get; set; }
+        public bool IsItFirstTask { get; set; } = false;
+
         public TimetableEntry? selectedTimetableEntry { get; set; } = new TimetableEntry { };
         public int selectedEditRowIndex { get; set; }
 
@@ -63,6 +65,11 @@ namespace IntuitiveTimetable.Pages
         public void EditTaskDialogVisChanged(bool e)
         {
             IsEditTaskDialogVisible = e;
+            if (e == false)
+            {
+                EditTaskValidationErrorMessage = string.Empty;
+                IsItFirstTask = false;
+            }
         }
 
         public void UpdateRowDetails(TaskData taskData)
@@ -87,6 +94,10 @@ namespace IntuitiveTimetable.Pages
 
         public void UpdateRow(int index)
         {
+            if (index == 0)
+            {
+                IsItFirstTask = true;
+            }
             selectedEditRowIndex = index;
             selectedTimetableEntry = timetableEntries[index];
             IsEditTaskDialogVisible = true;

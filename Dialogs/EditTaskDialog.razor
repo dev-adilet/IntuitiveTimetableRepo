@@ -12,8 +12,14 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Start Time</label>
-                        @* <input type="time" class="form-control" @bind="StartTime" /> *@
-                        <InputDate Type="InputDateType.Time" class="form-control" @bind-Value="StartTime" disabled="true"></InputDate>
+                        @if ((bool)IsItFirstRow!)
+                        {
+                            <input type="time" class="form-control" @bind="StartTime" />
+                        }
+                        else
+                        {
+                            <InputDate Type="InputDateType.Time" class="form-control" @bind-Value="StartTime" disabled="true"></InputDate>
+                        }
                     </div>
                     <div class="mb-3">
                         <label class="form-label">End Time</label>

@@ -28,6 +28,8 @@ namespace IntuitiveTimetable.Dialogs // Replace with your actual namespace
 
         [Parameter]
         public string? ValidationErrorMessage { get; set; }
+        [Parameter]
+        public bool? IsItFirstRow { get; set; }
         public int selectedEditRowIndex { get; set; }
 
         protected override void OnInitialized()
