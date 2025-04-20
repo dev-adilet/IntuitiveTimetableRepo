@@ -1,0 +1,417 @@
+/* /Dialogs/AddTaskDialog.razor.rz.scp.css */
+/* This will override the modal-content class within this component */
+.modal-content[b-wdtdl21a2z] {
+    border-radius: 1rem;
+    /* More overrides here */
+}
+/* /Dialogs/EditTaskDialog.razor.rz.scp.css */
+/* This will override the modal-content class within this component */
+.modal-content[b-fiytflm6ci] {
+    border-radius: 1rem;
+    /* More overrides here */
+}
+/* /Layout/MainLayout.razor.rz.scp.css */
+.page[b-uori5hpx15] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-uori5hpx15] {
+    flex: 1;
+}
+
+.sidebar[b-uori5hpx15] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-uori5hpx15] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-uori5hpx15]  a, .top-row[b-uori5hpx15]  .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+    .top-row[b-uori5hpx15]  a:hover, .top-row[b-uori5hpx15]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-uori5hpx15]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row[b-uori5hpx15] {
+        justify-content: space-between;
+    }
+
+    .top-row[b-uori5hpx15]  a, .top-row[b-uori5hpx15]  .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-uori5hpx15] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-uori5hpx15] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-uori5hpx15] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row.auth[b-uori5hpx15]  a:first-child {
+        flex: 1;
+        text-align: right;
+        width: 0;
+    }
+
+    .top-row[b-uori5hpx15], article[b-uori5hpx15] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* /Layout/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-diucy7jz40] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-diucy7jz40] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-diucy7jz40] {
+    font-size: 1.1rem;
+}
+
+.bi[b-diucy7jz40] {
+    display: inline-block;
+    position: relative;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.75rem;
+    top: -1px;
+    background-size: cover;
+}
+
+.bi-house-door-fill-nav-menu[b-diucy7jz40] {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-house-door-fill' viewBox='0 0 16 16'%3E%3Cpath d='M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z'/%3E%3C/svg%3E");
+}
+
+.bi-plus-square-fill-nav-menu[b-diucy7jz40] {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-plus-square-fill' viewBox='0 0 16 16'%3E%3Cpath d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z'/%3E%3C/svg%3E");
+}
+
+.bi-list-nested-nav-menu[b-diucy7jz40] {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-list-nested' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z'/%3E%3C/svg%3E");
+}
+
+.nav-item[b-diucy7jz40] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-diucy7jz40] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-diucy7jz40] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-diucy7jz40]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-diucy7jz40]  a.active {
+    background-color: rgba(255,255,255,0.37);
+    color: white;
+}
+
+.nav-item[b-diucy7jz40]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-diucy7jz40] {
+        display: none;
+    }
+
+    .collapse[b-diucy7jz40] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+    
+    .nav-scrollable[b-diucy7jz40] {
+        /* Allow sidebar to scroll for tall menus */
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}
+/* /Pages/Timetable.razor.rz.scp.css */
+.timetable[b-1ltofpuxyi] {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0px 2px 30px 2px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    border-radius: 2rem;
+}
+
+.action-button-div[b-1ltofpuxyi] {
+    margin-top: 1rem;
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0px 2px 30px 2px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    border-radius: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.thead-td[b-1ltofpuxyi] {
+    text-align: center;
+    font-size: 24px;
+}
+
+.thead-tr[b-1ltofpuxyi]{
+}
+
+.tbody-tr[b-1ltofpuxyi]{
+}
+
+.timetable-td[b-1ltofpuxyi] {
+    text-align: center;
+    font-size: 22px;
+}
+
+.inner[b-1ltofpuxyi] {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 0.6fr;
+}
+
+.header-inner[b-1ltofpuxyi] {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.inner tr td[b-1ltofpuxyi] {
+}
+
+.inner-td-left[b-1ltofpuxyi]{
+    border-right: 1.5px solid black;
+}
+
+.inner-td-mid[b-1ltofpuxyi] {
+}
+
+.inner-td-right[b-1ltofpuxyi] {
+    border-left: 1.5px solid black;
+}
+
+.task-row-padding-normal[b-1ltofpuxyi] {
+    padding-top: 0rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.task-row-padding-end[b-1ltofpuxyi] {
+    padding-top: 0px;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+.floating-button[b-1ltofpuxyi] {
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 50%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+.export-button[b-1ltofpuxyi] {
+    margin: 1rem;
+    border-radius: 1rem;
+    background-color: #3402b2;
+    color: white;
+    border: none;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+.import-button[b-1ltofpuxyi] {
+    margin: 1rem;
+    margin-left: 0rem;
+    border-radius: 1rem;
+    background-color: #824cc4;
+    color: white;
+    border: none;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+.button-row[b-1ltofpuxyi] {
+    /* Set dimensions and background for visualization */
+    width: 100%;
+    /* Enable Flexbox */
+    display: flex;
+    /* Center horizontally and vertically */
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.row-options-button-div[b-1ltofpuxyi] {
+    position: relative;
+    height: 1.55rem;
+    width: 1.55rem;
+    top: 0.25rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    font-size: 0.9rem;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    justify-self: end;
+    right: 0.3rem;
+}
+
+#row-options-item-div[b-1ltofpuxyi] {
+    top: 0.25rem;
+    justify-self: end;
+    position: relative;
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    font-size: 0.9rem;
+    width: 70px;
+    border-collapse: collapse;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0px;
+}
+
+#row-options-item-div-0[b-1ltofpuxyi] {
+    top: 0.25rem;
+    justify-self: end;
+    position: relative;
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    font-size: 0.9rem;
+    width: 70px;
+    border-collapse: collapse;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0px;
+}
+
+#row-options-delete-item-div[b-1ltofpuxyi] {
+    height: 1.55rem;
+    width: 1.55rem;
+    position: relative;
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    text-align: center;
+    justify-self: end;
+}
+
+#row-options-edit-item-div[b-1ltofpuxyi] {
+    height: 1.55rem;
+    width: 1.55rem;
+    position: relative;
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    text-align: center;
+    justify-self: end;
+    right: 0.3rem;
+}
+
+#row-options-edit-item-div-0[b-1ltofpuxyi] {
+    height: 1.55rem;
+    width: 1.55rem;
+    position: relative;
+    cursor: pointer;
+    /*border: 0.1rem solid black;*/
+    border-radius: 1.2rem;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    background: #fff; /* So the shadow is visible */
+    text-align: center;
+    justify-self: end;
+    right: 0.3rem;
+}
+
+#delete-icon[b-1ltofpuxyi] {
+    font-size: 1.1rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0rem;
+    color: red;
+}
+
+#edit-icon[b-1ltofpuxyi] {
+    font-size: 1.1rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0rem;
+    padding-left: 0.1rem;
+    color: orange;
+}
+
+
