@@ -54,9 +54,9 @@
                 @if (MenuOptionsRowIndex == i && MenuOptionsRowIndex != 0)
                 {
                     <tr class="tbody-tr">
-                        <td colspan="3">
-                            <div class="button-row">
-                                <button class="floating-button" @onclick="@(() => AddRowButtonPressed((tempi3 == 0 ? tempi3 : tempi3-1)))">
+                        <td colspan="3" class="task-row-padding-normal">
+                            <div class="button-row-in-between">
+                                <button class="floating-button-in-between" @onclick="@(() => AddRowButtonPressed((tempi3 == 0 ? tempi3 : tempi3-1)))">
                                     +
                                 </button>
                             </div>
@@ -114,9 +114,9 @@
                 @if (MenuOptionsRowIndex == i && timetableEntries.Count != i + 1)
                 {
                     <tr class="tbody-tr">
-                        <td colspan="3">
-                            <div class="button-row">
-                                <button class="floating-button" @onclick="@(() => AddRowButtonPressed(tempi4+1))">
+                        <td colspan="3" class="task-row-padding-normal">
+                            <div class="button-row-in-between">
+                                <button class="floating-button-in-between" @onclick="@(() => AddRowButtonPressed(tempi4+1))">
                                     +
                                 </button>
                             </div>

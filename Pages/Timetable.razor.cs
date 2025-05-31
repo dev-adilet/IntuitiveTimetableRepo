@@ -165,7 +165,12 @@ namespace IntuitiveTimetable.Pages
 
         protected void AdjustOtherRowsAfterAddAtIndex(int newRowIndex)
         {
-            //
+            for (int i = newRowIndex + 1; i < timetableEntries.Count; i++)
+            {
+                var duration = timetableEntries[i].EndTime - timetableEntries[i].StartTime;
+                timetableEntries[i].StartTime = timetableEntries[i - 1].EndTime;
+                timetableEntries[i].EndTime = timetableEntries[i].StartTime.AddMinutes(duration.Minutes);
+            }
         }
 
         public void CloseAddRowDialog()
