@@ -19,6 +19,7 @@ namespace IntuitiveTimetable.Pages
         public bool IsAddTaskDialogVisible { get; set; }
         public bool IsEditTaskDialogVisible { get; set; }
         public bool IsItFirstTask { get; set; } = false;
+        public int IndexWhereToAdd { get; set; } = -1;
 
         public TimetableEntry? selectedTimetableEntry { get; set; } = new TimetableEntry { };
         public int selectedEditRowIndex { get; set; }
@@ -63,9 +64,20 @@ namespace IntuitiveTimetable.Pages
             AddTaskDialogVisChanged(true);
         }
 
+        public void AddRowButtonPressed(int index)
+        {
+            AddTaskDialogVisChanged(true, index);
+        }
+
         public void AddTaskDialogVisChanged(bool e)
         {
             IsAddTaskDialogVisible = e;
+        }
+
+        public void AddTaskDialogVisChanged(bool e, int index)
+        {
+            IsAddTaskDialogVisible = e;
+            IndexWhereToAdd = index;
         }
 
         public void EditTaskDialogVisChanged(bool e)
@@ -125,7 +137,7 @@ namespace IntuitiveTimetable.Pages
             IsEditTaskDialogVisible = true;
         }
 
-        public void SaveRow(TaskData taskData)
+        public void AddRow(TaskData taskData)
         {
             var newRow = new TimetableEntry
             {
@@ -136,6 +148,29 @@ namespace IntuitiveTimetable.Pages
 
             timetableEntries.Add(newRow);
             CloseAddRowDialog();
+        }
+
+        public void AddRowAtIndex(TaskData taskData)
+        {
+            var newRow = new TimetableEntry
+            {
+                StartTime = taskData.StartTime,
+                EndTime = taskData.EndTime,
+                TaskName = taskData.TaskName
+            };
+            timetableEntries.Insert(IndexWhereToAdd, newRow);
+            AdjustOtherRowsAfterAddAtIndex(IndexWhereToAdd);
+            CloseAddRowDialog();
+        }
+
+        protected void AdjustOtherRowsAfterAddAtIndex(int newRowIndex)
+        {
+            for (int i = newRowIndex + 1; i < timetableEntries.Count; i++)
+            {
+                var duration = timetableEntries[i].EndTime - timetableEntries[i].StartTime;
+                timetableEntries[i].StartTime = timetableEntries[i - 1].EndTime;
+                timetableEntries[i].EndTime = timetableEntries[i].StartTime.AddMinutes(duration.Minutes);
+            }
         }
 
         public void CloseAddRowDialog()

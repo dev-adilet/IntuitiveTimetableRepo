@@ -6,25 +6,30 @@
     <PageTitle>Timetable</PageTitle>
 
     <AddTaskDialog IsVisible="IsAddTaskDialogVisible"
-                   VisibleChanged="AddTaskDialogVisChanged"
-                   OnSave="SaveRow"
-                   StartTime="timetableEntries[timetableEntries.Count - 1].EndTime"></AddTaskDialog>
+    VisibleChanged="AddTaskDialogVisChanged"
+    OnAddRow="AddRow"
+    OnAddRowAtIndex="AddRowAtIndex"
+    StartTime="
+    IndexWhereToAdd != -1 
+    ? timetableEntries[IndexWhereToAdd != 0 ? IndexWhereToAdd - 1 : IndexWhereToAdd].EndTime
+    : timetableEntries[timetableEntries.Count - 1].EndTime"
+    IndexWhereToAdd="IndexWhereToAdd"></AddTaskDialog>
 
     <EditTaskDialog IsVisible="IsEditTaskDialogVisible"
-                    VisibleChanged="EditTaskDialogVisChanged"
-                    TaskUpdated="UpdateRowDetails"
-                    StartTime="selectedTimetableEntry!.StartTime"
-                    EndTime="selectedTimetableEntry!.EndTime"
-                    TaskName="@(selectedTimetableEntry!.TaskName)"
-                    ValidationErrorMessage="@EditTaskValidationErrorMessage"
-                    IsItFirstRow="IsItFirstTask"></EditTaskDialog>
+    VisibleChanged="EditTaskDialogVisChanged"
+    TaskUpdated="UpdateRowDetails"
+    StartTime="selectedTimetableEntry!.StartTime"
+    EndTime="selectedTimetableEntry!.EndTime"
+    TaskName="@(selectedTimetableEntry!.TaskName)"
+    ValidationErrorMessage="@EditTaskValidationErrorMessage"
+    IsItFirstRow="IsItFirstTask"></EditTaskDialog>
 
     <table class="timetable">
         <thead>
             <tr class="thead-tr">
                 <td colspan="3"
-                    class="thead-td"
-                    style="padding-top: 10px;
+                class="thead-td"
+                style="padding-top: 10px;
                        padding-right: 20px;
                        padding-left: 20px;
                        padding-bottom: 10px;">
@@ -45,6 +50,19 @@
         <tbody>
             @for (int i = 0; i < timetableEntries.Count; i++)
             {
+                var tempi3 = i;
+                @if (MenuOptionsRowIndex == i && MenuOptionsRowIndex != 0)
+                {
+                    <tr class="tbody-tr">
+                        <td colspan="3" class="task-row-padding-normal">
+                            <div class="button-row-in-between">
+                                <button class="floating-button-in-between" @onclick="@(() => AddRowButtonPressed((tempi3 == 0 ? tempi3 : tempi3-1)))">
+                                    +
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
                 <tr class="tbody-tr">
                     <td colspan="3"
                         class="@(i == (timetableEntries.Count - 1) ? "timetable-td task-row-padding-end" : "timetable-td task-row-padding-normal")">
@@ -92,6 +110,19 @@
                         </div>
                     </td>
                 </tr>
+                var tempi4 = i;
+                @if (MenuOptionsRowIndex == i && timetableEntries.Count != i + 1)
+                {
+                    <tr class="tbody-tr">
+                        <td colspan="3" class="task-row-padding-normal">
+                            <div class="button-row-in-between">
+                                <button class="floating-button-in-between" @onclick="@(() => AddRowButtonPressed(tempi4+1))">
+                                    +
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
             }
             <tr class="tbody-tr">
                 <td colspan="3">
